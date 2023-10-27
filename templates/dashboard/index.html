@@ -1,0 +1,75 @@
+{% extends "partials/base.html" %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow">
+            <div class="card-header">Statistics</div>
+            <div class="card-body">
+                <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h6 class='text-center'>Total</h6>
+                            <p class='text-center'>{{total_todo}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h6 class='text-center'>Completed</h6>
+                            <p class='text-center'>{{completed_todo}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h6 class='text-center'>Pending</h6>
+                            <p class='text-center'>{{uncompleted_todo}}</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+</div> 
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header text-danger">
+                    Reminder!
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">These are you guides don't ignore</h5>
+                  <p class="card-text">We have 24 hours in a day please make sure to plan your day well.</p>
+                  <a href="{{ url_for('addtodo')}}" class="btn btn-primary w-100">Add Your Todo</a>
+                </div>
+              </div>
+        </div>
+    </div>
+{% if total_todo == 0 %}
+    <marquee class="mt-3" behavior="direction" direction=""> <h3>No Todo available. Go ahead and create some...</h3></marquee>
+    {% endif %}
+    {% for todo in todo_list %}
+    <div class="border-start border-5 mt-3 shadow">
+        <div class="card-body">
+            <h5 class="card-title">{{ todo.id }} | {{ todo.title }}</h5> 
+            {% if todo.complete == False %}
+            <span class="btn btn-info">Not Completed</span>
+            {% else %}
+            <span class="btn btn-success">Completed</span>
+            {% endif %}
+            <a class="btn btn-warning" href="/update/{{todo.id }}">Update</a>
+            <a class="btn btn-danger" href="/delete/{{todo.id }}">Delete</a>
+        </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

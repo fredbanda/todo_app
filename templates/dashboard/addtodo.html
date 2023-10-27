@@ -1,0 +1,61 @@
+{% extends "partials/base.html" %}
+{% block title %}Add Todo{% endblock title %}
+
+ {% block content %}
+ <div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow">
+            <div class="card-header">Reading Data</div>
+            <div class="card-body">
+                <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h6 class='text-center'>Total</h6>
+                            <p class='text-center'>Shows Total</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h6 class='text-center'>Completed</h6>
+                            <p class='text-center'>Shows Completed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h6 class='text-center'>Pending</h6>
+                            <p class='text-center'>Shows Pending</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+</div> 
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header">Todo Form</div>
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <label for="">Title</label>
+                        <input 
+                        class="form-control" 
+                        type="text" 
+                        name="title" 
+                        placeholder="Add ToDo..." 
+                        />
+                        <input class="btn btn-primary w-100 mt-3" type="submit" value="Add Todo">
+                    </form/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ {% endblock content %}
